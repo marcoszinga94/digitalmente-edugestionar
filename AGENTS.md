@@ -31,7 +31,8 @@ administrarlo con `npx astro dev status|logs|stop`.
 
 - Tailwind 4 sin `tailwind.config.js`: los tokens se declaran en `@theme`.
 - Colores de marca: `navy` (principal), `azure` y `amber` (acentos del logotipo).
-- Header y footer usan el logo de **DigitalMente**; el ícono de **EduGestionAR**
+- Header y footer usan el logo de **DigitalMente**; el favicon y el ícono de iOS se generan
+  desde `public/brand/isotipo.png` con `npm run assets`. El ícono de **EduGestionAR**
   (`public/brand/edugestionar.png`) se usa dentro del contenido del producto.
 - Islas React solo para interacción real, con `client:load` (menú, formulario) o `client:idle`
   (tabs, galería). **No usar `client:visible`**: los `astro-island` tienen `display: contents`

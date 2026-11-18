@@ -39,9 +39,10 @@ web-empresa/
 │  ├─ diagramas/          Modelo de datos simplificado
 │  ├─ documentos/         Manuales ES/EN y términos y condiciones
 │  ├─ og.png              Imagen para compartir en redes (1200×630)
-│  └─ favicon.svg         Ícono del sitio
+│  ├─ favicon.ico         Ícono del sitio (isotipo de DigitalMente)
+│  └─ favicon-*.png       Variantes 16, 32 y 256 px
 ├─ scripts/
-│  └─ generate-assets.mjs Genera la imagen OG y el ícono de iOS
+│  └─ generate-assets.mjs Genera favicons, ícono de iOS e imagen OG
 └─ src/
    ├─ config/site.ts      ⚠️ Contacto, navegación y dominio
    ├─ data/product.ts     Todo el contenido del producto
@@ -83,9 +84,11 @@ web-empresa/
   (`docs/capturas`, `docs/diagramas` y `App1/Resources`). Si actualizás la app, reemplazá los
   archivos manteniendo los nombres.
 - El instalador demo se toma de `Instalador/output/`.
-- El header y el footer usan el logo de **DigitalMente**; el ícono de **EduGestionAR** aparece en
-  el hero, la sección de descarga y como imagen de marca del producto.
-- Después de cambiar el logotipo o el favicon, corré `npm run assets` para regenerar OG e ícono iOS.
+- El header y el footer usan el logo de **DigitalMente**; el favicon y el ícono de iOS se
+  generan desde el isotipo de la marca (`public/brand/isotipo.png`). El ícono de
+  **EduGestionAR** aparece dentro del contenido del producto.
+- Después de cambiar el logotipo o el isotipo, corré `npm run assets` para regenerar favicons,
+  ícono de iOS e imagen OG.
 
 ## Publicación
 
