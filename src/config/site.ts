@@ -15,11 +15,11 @@ export const site = {
   url: 'https://edugestionar.com.ar',
   locale: 'es-AR',
   email: 'hola@digitalmente.com.ar',
-  phoneDisplay: '+54 9 11 5555-0100',
-  phoneHref: '+5491155550100',
-  whatsapp: '5491155550100',
-  city: 'Buenos Aires, Argentina',
-  addressNote: 'Soporte remoto en todo el país y reuniones coordinadas en CABA.',
+  phoneDisplay: '+54 9 3534 55-0100',
+  phoneHref: '+5493534550100',
+  whatsapp: '5493534550100',
+  city: 'La Carlota, Córdoba, Argentina',
+  addressNote: 'Soporte remoto en todo el país y reuniones coordinadas en La Carlota y la región.',
   hours: 'Lunes a viernes, de 9 a 18 h (ART)',
   /**
    * Si dejás el campo vacío, el formulario abre el cliente de correo con el
