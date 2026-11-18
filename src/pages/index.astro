@@ -1,0 +1,381 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ModuleTabs from '../components/react/ModuleTabs';
+import { site, whatsappHref } from '../config/site';
+import {
+  product,
+  homeFeatures,
+  highlights,
+  modules,
+  metrics,
+  faqs,
+} from '../data/product';
+
+const previewShots = [
+  { src: '/capturas/alumnos.png', title: 'Alumnos', alt: 'Listado de alumnos de EduGestionAR' },
+  { src: '/capturas/notas.png', title: 'Notas', alt: 'Carga de notas de EduGestionAR' },
+  { src: '/capturas/regularidad.png', title: 'Regularidad', alt: 'Regularidad de EduGestionAR' },
+];
+
+const homeFaqs = faqs.slice(0, 4);
+---
+
+<BaseLayout
+  title="EduGestionAR — Sistema de gestión escolar"
+  description={site.description}
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden border-b border-line bg-white">
+    <div class="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 grid-lines opacity-70 lg:block" aria-hidden="true">
+      <div class="absolute inset-0 bg-gradient-to-r from-white via-white/40 to-transparent"></div>
+    </div>
+
+    <div class="container-page relative grid items-center gap-14 py-16 lg:grid-cols-[1.02fr_1fr] lg:gap-16 lg:py-20">
+      <div>
+        <div class="flex flex-wrap items-center gap-3" data-reveal>
+          <p class="eyebrow">Sistema de gestión escolar</p>
+          <span class="rounded-full border border-navy-100 bg-navy-50 px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-navy-700">
+            Demo {product.version}
+          </span>
+        </div>
+
+        <h1 class="mt-5 font-display text-4xl font-semibold leading-[1.04] tracking-tight text-navy-900 sm:text-5xl lg:text-[3.35rem]" data-reveal style="--reveal-delay: 60ms">
+          Toda la gestión académica, en un solo sistema.
+        </h1>
+        <p class="mt-6 max-w-xl text-[1.05rem] leading-relaxed text-muted sm:text-lg" data-reveal style="--reveal-delay: 120ms">
+          <strong class="font-semibold text-ink">EduGestionAR</strong> reúne alumnos, carreras,
+          materias, notas, regularidad, asistencia, exámenes y respaldos en una aplicación de
+          escritorio para Windows. Funciona sin internet y se instala con un único ejecutable.
+        </p>
+
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row" data-reveal style="--reveal-delay: 180ms">
+          <Button href={product.installer.file} download>
+            <Icon name="download" class="h-4 w-4" />
+            Descargar demo
+          </Button>
+          <Button href="/funciones" variant="secondary" arrow>Ver funciones</Button>
+        </div>
+
+        <div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-[0.8rem] text-muted" data-reveal style="--reveal-delay: 210ms">
+          <span class="inline-flex items-center gap-1.5">
+            <Icon name="monitor" class="h-4 w-4 text-navy-500" /> Windows 10 y 11
+          </span>
+          <span class="inline-flex items-center gap-1.5">
+            <Icon name="hard-drive" class="h-4 w-4 text-navy-500" /> 39 MB · sin .NET
+          </span>
+          <a href={product.manuals[0].file} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 font-semibold text-navy-700 underline decoration-navy-300 underline-offset-4 hover:decoration-navy-700">
+            <Icon name="file-text" class="h-4 w-4" /> Manual de usuario
+          </a>
+        </div>
+      </div>
+
+      <div class="relative" data-reveal style="--reveal-delay: 140ms">
+        <div class="absolute -left-3 top-10 hidden h-24 w-1 rounded-full accent-line sm:block" aria-hidden="true"></div>
+
+        <figure class="relative rounded-xl border border-navy-100 bg-white p-2 shadow-lift">
+          <div class="flex items-center gap-2 rounded-t-md border-b border-line bg-sand px-3 py-2">
+            <span class="flex gap-1.5" aria-hidden="true">
+              <span class="h-2 w-2 rounded-full bg-navy-200"></span>
+              <span class="h-2 w-2 rounded-full bg-navy-200"></span>
+              <span class="h-2 w-2 rounded-full bg-navy-200"></span>
+            </span>
+            <figcaption class="ml-1 truncate text-[0.65rem] font-medium uppercase tracking-[0.14em] text-muted">
+              EduGestionAR · Panel principal
+            </figcaption>
+          </div>
+          <img
+            src="/capturas/dashboard.png"
+            alt="Panel principal de EduGestionAR con indicadores de alumnos, notas y calendario de exámenes"
+            width="1382"
+            height="736"
+            class="block w-full rounded-b-md"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </figure>
+
+        <div class="absolute -bottom-5 left-4 flex items-center gap-2.5 rounded-md border border-line bg-white px-3.5 py-2.5 shadow-card sm:left-8">
+          <img src="/brand/edugestionar.png" alt="" width="256" height="256" class="h-8 w-8 rounded-md" loading="lazy" decoding="async" />
+          <span class="leading-tight">
+            <span class="block font-display text-sm font-bold text-navy-900">Base de ejemplo</span>
+            <span class="block text-[0.7rem] text-muted">Incluida en la demo</span>
+          </span>
+        </div>
+
+        <div class="absolute -top-4 right-4 hidden items-center gap-2 rounded-md border border-line bg-white px-3 py-2 shadow-card sm:flex">
+          <span class="h-1.5 w-1.5 rounded-full bg-azure-500"></span>
+          <span class="text-[0.7rem] font-semibold text-navy-800">100 % local · ES / EN</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Métricas -->
+  <section class="border-b border-line bg-sand/60" aria-label="EduGestionAR en números">
+    <dl class="container-page grid grid-cols-2 gap-6 py-8 sm:grid-cols-4">
+      {
+        metrics.map((metric) => (
+          <div class="border-l border-navy-200 pl-4">
+            <dt class="font-display text-2xl font-bold tracking-tight text-navy-800 sm:text-3xl">{metric.value}</dt>
+            <dd class="mt-0.5 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-navy-500">{metric.label}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+
+  <!-- Funciones principales -->
+  <section class="py-20 lg:py-24" aria-labelledby="funciones-titulo">
+    <div class="container-page">
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <SectionHeading
+          eyebrow="Qué resuelve"
+          title="El día a día de la institución, ordenado"
+          description="Cada módulo trabaja sobre la misma base de datos: lo que se carga en un lugar se refleja en los demás, sin planillas paralelas."
+        />
+        <a href="/funciones" class="group inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-navy-700 transition-colors hover:text-navy-900">
+          Ver todas las funciones
+          <Icon name="arrow-right" class="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+        </a>
+      </div>
+
+      <ul class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          homeFeatures.map((feature, index) => (
+            <li data-reveal style={`--reveal-delay: ${index * 60}ms`}>
+              <div class="flex h-full flex-col rounded-lg border border-line bg-white p-6 shadow-card">
+                <span class="inline-flex h-11 w-11 items-center justify-center rounded-md bg-navy-50 text-navy-700">
+                  <Icon name={feature.icon} class="h-5 w-5" />
+                </span>
+                <h3 class="mt-5 font-display text-lg font-semibold text-navy-900">{feature.title}</h3>
+                <p class="mt-2 text-sm leading-relaxed text-muted">{feature.description}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Módulos interactivos -->
+  <section id="modulos" class="border-y border-line bg-sand/60 py-16 lg:py-20">
+    <div class="container-page">
+      <SectionHeading
+        eyebrow="Recorrido por el sistema"
+        title="El sistema, módulo por módulo"
+        description="Una selección de pantallas reales y las decisiones de diseño detrás de cada módulo."
+      />
+      <div class="mt-10" data-reveal>
+        <ModuleTabs modules={modules} client:idle />
+      </div>
+      <p class="mt-4 text-xs text-muted">
+        Capturas de la versión de demostración. Los datos que aparecen son de ejemplo.
+      </p>
+    </div>
+  </section>
+
+  <!-- Pensado para el día a día -->
+  <section class="relative overflow-hidden bg-navy-900 py-16 text-white lg:py-20">
+    <div class="pointer-events-none absolute inset-0 opacity-[0.15]" aria-hidden="true">
+      <div class="absolute inset-0" style="background-image: linear-gradient(to right, rgba(255,255,255,.18) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,.18) 1px, transparent 1px); background-size: 72px 72px;"></div>
+    </div>
+
+    <div class="container-page relative">
+      <SectionHeading
+        eyebrow="Pensado para el trabajo diario"
+        title="Menos pasos, menos errores, menos papeles"
+        description="Decisiones de producto que se notan cuando el sistema lo usa todo el equipo, todos los días."
+        tone="dark"
+      />
+
+      <ul class="mt-12 grid gap-6 sm:grid-cols-2">
+        {
+          highlights.map((item, index) => (
+            <li class="flex gap-4 border-t border-white/15 pt-5" data-reveal style={`--reveal-delay: ${index * 60}ms`}>
+              <span class="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-white/15 bg-white/5 text-azure-300">
+                <Icon name={item.icon} class="h-5 w-5" />
+              </span>
+              <div>
+                <h3 class="font-display text-base font-semibold text-white">{item.title}</h3>
+                <p class="mt-1.5 text-sm leading-relaxed text-navy-100/75">{item.description}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Capturas -->
+  <section class="py-16 lg:py-20">
+    <div class="container-page">
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <SectionHeading
+          eyebrow="Capturas"
+          title="La aplicación, pantalla por pantalla"
+          description="Ocho pantallas principales y los diálogos de carga más usados."
+        />
+        <Button href="/capturas" variant="secondary" arrow>Ver galería completa</Button>
+      </div>
+
+      <ul class="mt-10 grid gap-5 sm:grid-cols-3">
+        {
+          previewShots.map((shot) => (
+            <li>
+              <a href="/capturas" class="group block overflow-hidden rounded-lg border border-line bg-white shadow-card transition-colors hover:border-navy-200">
+                <img
+                  src={shot.src}
+                  alt={shot.alt}
+                  width="1382"
+                  height="736"
+                  loading="lazy"
+                  decoding="async"
+                  class="block w-full border-b border-line transition-transform duration-500 group-hover:scale-[1.02]"
+                />
+                <span class="flex items-center justify-between px-4 py-3">
+                  <span class="font-display text-sm font-semibold text-navy-900">{shot.title}</span>
+                  <Icon name="expand" class="h-4 w-4 text-navy-400" />
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Descarga -->
+  <section id="descargar" class="border-y border-line bg-sand/70 py-16 lg:py-20">
+    <div class="container-page">
+      <div class="overflow-hidden rounded-xl border border-line bg-white shadow-card lg:grid lg:grid-cols-[1.25fr_0.75fr]">
+        <div class="p-7 sm:p-9">
+          <p class="eyebrow">Probar la demo</p>
+          <h2 class="mt-4 font-display text-2xl font-semibold text-navy-900 sm:text-3xl">
+            Instalá EduGestionAR en tu equipo
+          </h2>
+          <p class="mt-3 max-w-xl text-sm leading-relaxed text-muted">
+            El instalador incluye la aplicación completa y una base de ejemplo con alumnos,
+            docentes, carreras y materias. No requiere .NET ni conexión a internet.
+          </p>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <Button href={product.installer.file} download>
+              <Icon name="download" class="h-4 w-4" />
+              Descargar instalador · 39 MB
+            </Button>
+            <Button href="/documentacion#requisitos" variant="secondary">Requisitos</Button>
+          </div>
+
+          <p class="mt-4 text-xs leading-relaxed text-muted">
+            Versión {product.version} para Windows x64 · Demo con fines académicos. No usar con
+            datos personales reales.
+          </p>
+
+          <dl class="mt-7 grid gap-4 border-t border-line pt-5 text-sm sm:grid-cols-2">
+            <div>
+              <dt class="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-muted">Usuario</dt>
+              <dd class="mt-1 font-mono text-sm font-semibold text-navy-900">{product.demoCredentials.user}</dd>
+            </div>
+            <div>
+              <dt class="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-muted">Contraseña</dt>
+              <dd class="mt-1 font-mono text-sm font-semibold text-navy-900">{product.demoCredentials.password}</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="flex items-center justify-center border-t border-line bg-navy-900 p-8 lg:border-l lg:border-t-0">
+          <figure class="w-full max-w-[240px]">
+            <img
+              src="/capturas/login.png"
+              alt="Pantalla de inicio de sesión de EduGestionAR"
+              width="426"
+              height="528"
+              loading="lazy"
+              decoding="async"
+              class="w-full rounded-md border border-white/10 shadow-lift"
+            />
+            <figcaption class="mt-3 text-center text-[0.7rem] text-navy-200/70">
+              Inicio de sesión de la demo
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Preguntas -->
+  <section class="py-16 lg:py-20" aria-labelledby="preguntas">
+    <div class="container-page grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+      <div>
+        <SectionHeading eyebrow="Preguntas frecuentes" title="Antes de instalarlo" />
+        <a href="/documentacion" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-navy-700 hover:text-navy-900">
+          Ver documentación completa
+          <Icon name="arrow-right" class="h-4 w-4" />
+        </a>
+      </div>
+
+      <div class="divide-y divide-line border-y border-line">
+        {
+          homeFaqs.map((faq) => (
+            <details class="group py-5">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-[1.02rem] font-semibold text-navy-900 marker:hidden">
+                {faq.question}
+                <Icon name="chevron-down" class="h-4 w-4 shrink-0 text-navy-400 transition-transform group-open:rotate-180" />
+              </summary>
+              <p class="mt-3 max-w-2xl text-sm leading-relaxed text-muted">{faq.answer}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre DigitalMente + CTA -->
+  <section class="border-t border-line bg-white py-16 lg:py-20">
+    <div class="container-page grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+      <div class="rounded-lg border border-line bg-sand/60 p-7">
+        <img
+          src="/brand/digitalmente.png"
+          alt="DigitalMente — Tech Solutions"
+          width="300"
+          height="137"
+          class="h-10 w-auto"
+          loading="lazy"
+          decoding="async"
+        />
+        <p class="mt-5 text-sm leading-relaxed text-muted">
+          EduGestionAR fue desarrollado por <strong class="font-semibold text-ink">DigitalMente — Tech Solutions</strong>,
+          un equipo de Buenos Aires especializado en sistemas de gestión y aplicaciones de escritorio.
+          El proyecto se entregó con manual de usuario en español e inglés, documentación del modelo
+          de datos e instalador para Windows.
+        </p>
+      </div>
+
+      <div>
+        <p class="eyebrow">Siguiente paso</p>
+        <h2 class="mt-4 font-display text-2xl font-semibold text-navy-900 sm:text-3xl">
+          ¿Querés verlo con los datos de tu institución?
+        </h2>
+        <p class="mt-3 max-w-xl text-sm leading-relaxed text-muted">
+          Escribinos y coordinamos una demostración guiada, o contanos qué necesitarías adaptar
+          del sistema para tu escuela.
+        </p>
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+          <Button href="/contacto" arrow>Hablemos</Button>
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 rounded-md border border-navy-200 px-5 py-3 text-[0.9rem] font-semibold text-navy-800 transition-colors hover:border-navy-300 hover:bg-navy-50"
+          >
+            <Icon name="whatsapp" class="h-4 w-4" />
+            WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

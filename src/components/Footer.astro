@@ -1,0 +1,137 @@
+---
+import { site, whatsappHref } from '../config/site';
+import { product } from '../data/product';
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-navy-950 text-navy-100">
+  <div class="accent-line h-px w-full opacity-80" aria-hidden="true"></div>
+
+  <div class="container-page py-14 lg:py-16">
+    <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr]">
+      <div>
+        <Logo variant="light" />
+        <p class="mt-6 max-w-xs text-sm leading-relaxed text-navy-200/80">
+          EduGestionAR es un producto de DigitalMente: gestión escolar para Windows con alumnos,
+          carreras, notas, regularidad, asistencia, exámenes y respaldos en un solo sistema.
+        </p>
+        <a
+          href={product.installer.file}
+          download
+          class="mt-6 inline-flex items-center gap-2 rounded-md border border-white/20 px-4 py-2.5 text-[0.82rem] font-semibold text-white transition-colors hover:bg-white/10"
+        >
+          <Icon name="download" class="h-4 w-4" />
+          Descargar demo · {product.installer.size}
+        </a>
+      </div>
+
+      <nav aria-label="Producto">
+        <h2 class="font-display text-xs font-semibold uppercase tracking-[0.18em] text-navy-300">
+          Producto
+        </h2>
+        <ul class="mt-5 space-y-3 text-sm">
+          <li>
+            <a href="/funciones" class="text-navy-100/80 transition-colors hover:text-white">Funciones</a>
+          </li>
+          <li>
+            <a href="/capturas" class="text-navy-100/80 transition-colors hover:text-white">Capturas</a>
+          </li>
+          <li>
+            <a href="/documentacion" class="text-navy-100/80 transition-colors hover:text-white">Documentación</a>
+          </li>
+          <li>
+            <a href="/documentacion#requisitos" class="text-navy-100/80 transition-colors hover:text-white">
+              Requisitos e instalación
+            </a>
+          </li>
+          <li>
+            <a href="/contacto" class="text-navy-100/80 transition-colors hover:text-white">Contacto</a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Recursos">
+        <h2 class="font-display text-xs font-semibold uppercase tracking-[0.18em] text-navy-300">
+          Recursos
+        </h2>
+        <ul class="mt-5 space-y-3 text-sm">
+          <li>
+            <a href={product.manuals[0].file} target="_blank" rel="noopener noreferrer" class="text-navy-100/80 transition-colors hover:text-white">
+              Manual de usuario (ES)
+            </a>
+          </li>
+          <li>
+            <a href={product.manuals[1].file} target="_blank" rel="noopener noreferrer" class="text-navy-100/80 transition-colors hover:text-white">
+              User manual (EN)
+            </a>
+          </li>
+          <li>
+            <a href={product.dataModel} target="_blank" rel="noopener noreferrer" class="text-navy-100/80 transition-colors hover:text-white">
+              Modelo de datos
+            </a>
+          </li>
+          <li>
+            <a href={product.termsFile} target="_blank" rel="noopener noreferrer" class="text-navy-100/80 transition-colors hover:text-white">
+              Términos y condiciones
+            </a>
+          </li>
+          <li>
+            <a href="/privacidad" class="text-navy-100/80 transition-colors hover:text-white">Privacidad</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div>
+        <h2 class="font-display text-xs font-semibold uppercase tracking-[0.18em] text-navy-300">
+          Soporte
+        </h2>
+        <ul class="mt-5 space-y-4 text-sm">
+          <li>
+            <a
+              href={`mailto:${site.email}`}
+              class="flex items-start gap-3 text-navy-100/80 transition-colors hover:text-white"
+            >
+              <Icon name="mail" class="mt-0.5 h-4 w-4 shrink-0 text-azure-300" />
+              {site.email}
+            </a>
+          </li>
+          <li>
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-start gap-3 text-navy-100/80 transition-colors hover:text-white"
+            >
+              <Icon name="whatsapp" class="mt-0.5 h-4 w-4 shrink-0 text-azure-300" />
+              WhatsApp
+            </a>
+          </li>
+          <li>
+            <a
+              href={`tel:${site.phoneHref}`}
+              class="flex items-start gap-3 text-navy-100/80 transition-colors hover:text-white"
+            >
+              <Icon name="phone" class="mt-0.5 h-4 w-4 shrink-0 text-azure-300" />
+              {site.phoneDisplay}
+            </a>
+          </li>
+          <li class="flex items-start gap-3 text-navy-100/70">
+            <Icon name="map-pin" class="mt-0.5 h-4 w-4 shrink-0 text-azure-300" />
+            {site.city}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 flex flex-col gap-6 border-t border-white/10 pt-6 text-xs text-navy-300/80 sm:flex-row sm:items-center sm:justify-between">
+      <p>
+        © {year} {site.productName} · Un producto de {site.companyFullName}. Todos los derechos
+        reservados.
+      </p>
+      <a href="/privacidad" class="transition-colors hover:text-white">Política de privacidad</a>
+    </div>
+  </div>
+</footer>

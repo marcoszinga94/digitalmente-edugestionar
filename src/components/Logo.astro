@@ -1,0 +1,48 @@
+---
+interface Props {
+  variant?: 'dark' | 'light';
+  class?: string;
+  href?: string;
+}
+
+const { variant = 'dark', class: className = '', href = '/' } = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={['inline-flex items-center gap-3', className]}
+>
+  {
+    variant === 'dark' ? (
+      <img
+        src="/brand/digitalmente.png"
+        alt="DigitalMente — Tech Solutions"
+        width="300"
+        height="137"
+        class="h-12 w-auto"
+        loading="eager"
+        decoding="async"
+      />
+    ) : (
+      <span class="flex items-center gap-3">
+        <img
+          src="/brand/isotipo.png"
+          alt=""
+          width="255"
+          height="326"
+          class="h-9 w-auto"
+          loading="eager"
+          decoding="async"
+        />
+        <span class="flex flex-col leading-none">
+          <span class="font-display text-xl font-extrabold tracking-tight text-white">
+            Digital<span class="bg-gradient-to-r from-azure-400 to-amber-500 bg-clip-text text-transparent">Mente</span>
+          </span>
+          <span class="mt-1 text-[0.6rem] font-medium uppercase tracking-[0.28em] text-navy-200/80">
+            Tech Solutions
+          </span>
+        </span>
+      </span>
+    )
+  }
+</a>

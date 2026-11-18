@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config/site';
+---
+
+<BaseLayout
+  title="Política de privacidad"
+  description="Cómo trata DigitalMente los datos personales recibidos a través del sitio y de los canales de contacto."
+  noindex
+>
+  <section class="border-b border-line bg-sand/50">
+    <div class="container-page py-12 lg:py-16">
+      <p class="eyebrow">Legales</p>
+      <h1 class="mt-4 font-display text-3xl font-semibold tracking-tight text-navy-900 sm:text-4xl">
+        Política de privacidad
+      </h1>
+      <p class="mt-4 text-sm text-muted">Última actualización: noviembre de 2026</p>
+    </div>
+  </section>
+
+  <article class="container-narrow py-14">
+    <div class="prose-institutional">
+      <p>
+        Esta política describe cómo <strong>{site.companyFullName}</strong>, desarrollador de
+        EduGestionAR, trata los datos personales que recibe a través de este sitio web y de sus
+        canales de contacto. Es un documento informativo y puede actualizarse; la versión vigente
+        es la publicada en esta página.
+      </p>
+
+      <h2>1. Responsable del tratamiento</h2>
+      <p>
+        El responsable es {site.companyFullName}, con domicilio de referencia en {site.city}. Para
+        cualquier consulta sobre datos personales podés escribir a{' '}
+        <a href={`mailto:${site.email}`}>{site.email}</a>.
+      </p>
+
+      <h2>2. Qué datos recopilamos</h2>
+      <ul>
+        <li>Datos que nos enviás voluntariamente: nombre, correo electrónico, institución o empresa y el contenido del mensaje.</li>
+        <li>Datos técnicos mínimos del servidor de hosting (dirección IP, fecha y hora del acceso) con fines de seguridad y diagnóstico.</li>
+      </ul>
+      <p>
+        No pedimos datos sensibles ni información de menores de edad a través de este sitio.
+      </p>
+
+      <h2>3. Para qué los usamos</h2>
+      <ul>
+        <li>Responder tu consulta y elaborar una propuesta comercial si corresponde.</li>
+        <li>Mantener el registro de la comunicación mientras el proyecto esté activo o en evaluación.</li>
+        <li>Cumplir obligaciones legales o requerimientos de autoridades competentes.</li>
+      </ul>
+      <p>
+        No usamos los datos para publicidad, no los vendemos y no los cedemos a terceros con
+        fines comerciales.
+      </p>
+
+      <h2>4. Base legal</h2>
+      <p>
+        El tratamiento se basa en el consentimiento que otorgás al enviar el formulario o al
+        escribirnos, y en el interés legítimo de responder consultas comerciales. En Argentina
+        resulta aplicable la Ley 25.326 de Protección de Datos Personales.
+      </p>
+
+      <h2>5. Conservación</h2>
+      <p>
+        Conservamos los mensajes durante el tiempo necesario para atender la consulta y, si se
+        inicia una relación comercial, durante el plazo que exijan las obligaciones legales o
+        contractuales aplicables.
+      </p>
+
+      <h2>6. Destinatarios y encargados</h2>
+      <p>
+        Para el funcionamiento del sitio y del correo electrónico utilizamos proveedores de
+        hosting y servicios de infraestructura que pueden procesar datos por cuenta nuestra.
+        Cuando el formulario se envía a un servicio externo de recepción de mensajes, ese
+        proveedor actúa como encargado del tratamiento.
+      </p>
+
+      <h2>7. Tus derechos</h2>
+      <p>
+        Podés solicitar acceso, rectificación, actualización o supresión de tus datos escribiendo
+        a <a href={`mailto:${site.email}`}>{site.email}</a>. Responderemos en los plazos que
+        establece la normativa aplicable.
+      </p>
+      <p>
+        La Agencia de Acceso a la Información Pública es el órgano de control en materia de datos
+        personales en Argentina y tiene a su cargo la atención de reclamos al respecto.
+      </p>
+
+      <h2>8. Cookies</h2>
+      <p>
+        Este sitio no utiliza cookies de publicidad ni de seguimiento. Si en el futuro se
+        incorporan herramientas de analítica, se informará en esta misma página y se solicitará
+        el consentimiento correspondiente cuando sea necesario.
+      </p>
+
+      <h2>9. Seguridad</h2>
+      <p>
+        Aplicamos medidas razonables para proteger la información que recibimos. Ningún sistema
+        es completamente infalible; si detectamos un incidente que afecte datos personales,
+        actuaremos conforme a la normativa vigente.
+      </p>
+
+      <h2>10. Contacto</h2>
+      <p>
+        Por cualquier duda sobre esta política podés escribir a{' '}
+        <a href={`mailto:${site.email}`}>{site.email}</a> o llamar al {site.phoneDisplay}.
+      </p>
+
+      <p class="rounded-md border border-line bg-sand/70 p-4 text-xs leading-relaxed text-muted">
+        <strong class="text-navy-800">Nota:</strong> este texto es una base de trabajo. Antes de
+        publicar el sitio con datos reales, conviene que un profesional revise el documento y
+        complete la razón social, el CUIT y el domicilio legal.
+      </p>
+    </div>
+  </article>
+</BaseLayout>

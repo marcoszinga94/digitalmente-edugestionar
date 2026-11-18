@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ScreenshotGallery from '../components/react/ScreenshotGallery';
+import { product, galleryShots } from '../data/product';
+
+const mainShots = galleryShots.filter((shot) => shot.group === 'principal');
+const dialogShots = galleryShots.filter((shot) => shot.group === 'dialogo');
+---
+
+<BaseLayout
+  title="Capturas"
+  description="Galería de pantallas de EduGestionAR: panel, alumnos, notas, regularidad, asistencia, materias, usuarios, importación de datos y diálogos de carga."
+>
+  <section class="border-b border-line bg-sand/50">
+    <div class="container-page py-14 lg:py-20">
+      <p class="eyebrow" data-reveal>Capturas</p>
+      <h1 class="mt-5 max-w-3xl font-display text-4xl font-semibold leading-[1.06] tracking-tight text-navy-900 sm:text-5xl" data-reveal style="--reveal-delay: 60ms">
+        La aplicación, pantalla por pantalla
+      </h1>
+      <p class="mt-6 max-w-2xl text-[1.05rem] leading-relaxed text-muted" data-reveal style="--reveal-delay: 120ms">
+        Ocho pantallas principales y los diálogos de carga más usados. Hacé clic en cualquier
+        imagen para verla en detalle; dentro de la galería podés navegar con las flechas del
+        teclado.
+      </p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row" data-reveal style="--reveal-delay: 180ms">
+        <Button href={product.installer.file} download>
+          <Icon name="download" class="h-4 w-4" />
+          Descargar demo
+        </Button>
+        <Button href="/funciones" variant="secondary" arrow>Ver funciones</Button>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-20" aria-labelledby="principales">
+    <div class="container-page">
+      <SectionHeading
+        eyebrow="Módulos principales"
+        title="Las ocho pantallas de trabajo"
+        description="Todas las capturas corresponden a la versión de demostración; los datos que aparecen son de ejemplo."
+      />
+      <div class="mt-10">
+        <ScreenshotGallery shots={mainShots} client:idle />
+      </div>
+    </div>
+  </section>
+
+  <section class="border-y border-line bg-sand/60 py-16 lg:py-20" aria-labelledby="dialogos">
+    <div class="container-page">
+      <SectionHeading
+        eyebrow="Diálogos y acceso"
+        title="Las ventanas de carga rápida"
+        description="Altas, edición de notas y correlatividades, registro de asistencia y el inicio de sesión."
+      />
+      <div class="mt-10">
+        <ScreenshotGallery shots={dialogShots} client:idle />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-14">
+    <div class="container-page">
+      <div class="flex flex-col items-start justify-between gap-6 rounded-xl border border-navy-100 bg-navy-50/60 p-8 sm:flex-row sm:items-center">
+        <div class="max-w-xl">
+          <h2 class="font-display text-2xl font-semibold text-navy-900">¿Querés verlo con tus datos?</h2>
+          <p class="mt-2 text-sm leading-relaxed text-muted">
+            La demo se instala en minutos. Si preferís una recorrida guiada, coordinamos una
+            videollamada.
+          </p>
+        </div>
+        <div class="flex shrink-0 flex-wrap gap-3">
+          <Button href={product.installer.file} download>Descargar demo</Button>
+          <Button href="/contacto" variant="secondary">Contacto</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

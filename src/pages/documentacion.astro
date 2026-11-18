@@ -1,0 +1,384 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { product, requirements, installSteps, faqs, techSheet } from '../data/product';
+
+const quickLinks = [
+  {
+    title: 'Manual de usuario',
+    description: 'Guía completa en español, revisión 1.2.',
+    href: product.manuals[0].file,
+    meta: 'PDF · 1,2 MB',
+    icon: 'file-text' as const,
+    external: true,
+  },
+  {
+    title: 'User manual',
+    description: 'Versión en inglés del manual de usuario.',
+    href: product.manuals[1].file,
+    meta: 'PDF · 1,4 MB',
+    icon: 'file-text' as const,
+    external: true,
+  },
+  {
+    title: 'Modelo de datos',
+    description: 'Diagrama simplificado de las doce tablas.',
+    href: product.dataModel,
+    meta: 'PNG',
+    icon: 'database' as const,
+    external: true,
+  },
+  {
+    title: 'Términos y condiciones',
+    description: 'Condiciones de uso de la versión demo.',
+    href: product.termsFile,
+    meta: 'Texto plano',
+    icon: 'shield' as const,
+    external: true,
+  },
+];
+
+const dataLocations = [
+  { label: 'Base de datos', value: '%LOCALAPPDATA%\\EduGestor\\edugestor.db' },
+  { label: 'Preferencias', value: '%LOCALAPPDATA%\\EduGestor\\settings.txt' },
+  { label: 'Respaldos CSV', value: 'Documentos\\EduGestionAR - Datos' },
+];
+
+const csvTables = [
+  'carreras',
+  'materias',
+  'correlativas',
+  'alumnos',
+  'alumno_materias',
+  'regularidad',
+  'notas',
+  'examenes',
+  'asistencia',
+  'prorrogas',
+  'usuarios',
+  'profesor_materias',
+];
+
+const limitations = [
+  'Versión de demostración con fines académicos: no debe usarse como sistema oficial ni con datos personales reales.',
+  'Contraseñas con SHA-256 y sal fija, sin bloqueo por intentos: no apto para producción.',
+  'Base de datos local y sin cifrar; no hay servidor, trabajo en red ni auditoría.',
+  'Al iniciar se recalculan promedio, estado, regularidad e inscripciones, por lo que los valores importados pueden ser reemplazados.',
+  'Sin tests automatizados: las verificaciones son manuales.',
+  'El instalador no está firmado digitalmente, por lo que Windows puede mostrar un aviso.',
+  'Solo Windows (x64).',
+];
+---
+
+<BaseLayout
+  title="Documentación"
+  description="Requisitos, instalación, primer acceso, respaldos, modelo de datos, manuales en PDF y limitaciones de la demo de EduGestionAR."
+>
+  <section class="border-b border-line bg-sand/50">
+    <div class="container-page py-14 lg:py-20">
+      <p class="eyebrow" data-reveal>Documentación</p>
+      <h1 class="mt-5 max-w-3xl font-display text-4xl font-semibold leading-[1.06] tracking-tight text-navy-900 sm:text-5xl" data-reveal style="--reveal-delay: 60ms">
+        Todo lo necesario para instalarlo y usarlo
+      </h1>
+      <p class="mt-6 max-w-2xl text-[1.05rem] leading-relaxed text-muted" data-reveal style="--reveal-delay: 120ms">
+        Requisitos, puesta en marcha, credenciales de la demo, ubicación de los datos y manuales
+        completos en español e inglés.
+      </p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row" data-reveal style="--reveal-delay: 180ms">
+        <Button href={product.installer.file} download>
+          <Icon name="download" class="h-4 w-4" />
+          Descargar instalador · {product.installer.size}
+        </Button>
+        <Button href={product.manuals[0].file} variant="secondary" external>
+          <Icon name="file-text" class="h-4 w-4" />
+          Abrir manual
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Accesos rápidos -->
+  <section class="py-14" aria-label="Recursos">
+    <div class="container-page grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        quickLinks.map((link) => (
+          <a
+            href={link.href}
+            {...link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {}}
+            class="group flex h-full flex-col rounded-lg border border-line bg-white p-5 shadow-card transition-colors hover:border-navy-200"
+          >
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-md bg-navy-50 text-navy-700">
+              <Icon name={link.icon} class="h-5 w-5" />
+            </span>
+            <h2 class="mt-4 font-display text-base font-semibold text-navy-900">{link.title}</h2>
+            <p class="mt-1.5 flex-1 text-xs leading-relaxed text-muted">{link.description}</p>
+            <span class="mt-4 flex items-center justify-between text-[0.72rem] font-semibold uppercase tracking-[0.1em] text-navy-500">
+              {link.meta}
+              <Icon name="arrow-up-right" class="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Requisitos e instalación -->
+  <section id="requisitos" class="border-y border-line bg-sand/60 py-16 lg:py-20">
+    <div class="container-page grid gap-12 lg:grid-cols-[0.82fr_1.18fr]">
+      <div>
+        <SectionHeading
+          eyebrow="Requisitos"
+          title="Qué necesita el equipo"
+          description="El instalador es autocontenido: no hace falta instalar .NET ni ninguna dependencia adicional."
+        />
+
+        <dl class="mt-8 divide-y divide-line border-y border-line">
+          {
+            requirements.map((item) => (
+              <div class="flex items-baseline justify-between gap-4 py-3">
+                <dt class="text-[0.72rem] uppercase tracking-[0.14em] text-muted">{item.label}</dt>
+                <dd class="text-right text-sm font-medium text-navy-900">{item.value}</dd>
+              </div>
+            ))
+          }
+        </dl>
+
+        <div class="mt-6 rounded-md border border-amber-200 bg-amber-50/60 p-4">
+          <p class="flex gap-3 text-xs leading-relaxed text-amber-900">
+            <Icon name="shield" class="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
+            <span>
+              Windows puede advertir que el instalador no está firmado digitalmente. Es esperable
+              en esta versión de demostración.
+            </span>
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <p class="eyebrow">Puesta en marcha</p>
+        <h2 class="mt-4 font-display text-2xl font-semibold text-navy-900 sm:text-3xl">
+          Tres pasos y está listo
+        </h2>
+
+        <ol class="mt-8 space-y-6">
+          {
+            installSteps.map((step) => (
+              <li class="flex gap-4 border-l-2 border-navy-100 pl-5">
+                <span class="font-display text-xl font-bold text-navy-500">{step.number}</span>
+                <div>
+                  <h3 class="font-display text-base font-semibold text-navy-900">{step.title}</h3>
+                  <p class="mt-1.5 text-sm leading-relaxed text-muted">{step.description}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+
+        <div class="mt-8 rounded-lg border border-line bg-white p-5 shadow-card">
+          <h3 class="flex items-center gap-2 font-display text-sm font-semibold text-navy-900">
+            <Icon name="clock" class="h-4 w-4 text-navy-600" />
+            Primer acceso
+          </h3>
+          <p class="mt-2 text-sm leading-relaxed text-muted">
+            Usuario <code class="rounded bg-sand px-1.5 py-0.5 font-mono text-[0.8rem] text-navy-900">{product.demoCredentials.user}</code>
+            y contraseña <code class="rounded bg-sand px-1.5 py-0.5 font-mono text-[0.8rem] text-navy-900">{product.demoCredentials.password}</code>.
+            Cambiala desde <strong class="font-semibold text-ink">Usuarios → Editar</strong> y creá un usuario por persona.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Datos y respaldos -->
+  <section id="datos" class="py-16 lg:py-20">
+    <div class="container-page grid gap-12 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <p class="eyebrow">Datos y respaldos</p>
+        <h2 class="mt-4 font-display text-2xl font-semibold text-navy-900 sm:text-3xl">
+          Dónde vive la información
+        </h2>
+        <p class="mt-4 text-sm leading-relaxed text-muted">
+          Cada usuario de Windows tiene su propia base local. Actualizar o reinstalar la
+          aplicación no modifica los datos; desinstalar tampoco los borra.
+        </p>
+
+        <dl class="mt-6 divide-y divide-line border-y border-line">
+          {
+            dataLocations.map((item) => (
+              <div class="py-3.5">
+                <dt class="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-muted">{item.label}</dt>
+                <dd class="mt-1 break-all font-mono text-[0.8rem] text-navy-900">{item.value}</dd>
+              </div>
+            ))
+          }
+        </dl>
+
+        <div class="mt-6 rounded-md border border-navy-100 bg-navy-50/70 p-4">
+          <p class="text-xs leading-relaxed text-navy-800">
+            Para una copia de seguridad manual, copiá la carpeta <code class="font-mono">%LOCALAPPDATA%\EduGestor</code>
+            con la aplicación cerrada. También podés usar la exportación completa desde
+            <strong class="font-semibold"> Archivo → Exportar datos</strong>.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-display text-lg font-semibold text-navy-900">Exportación e importación</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted">
+          El sistema exporta las doce tablas en archivos CSV separados y permite reimportarlas
+          con vista previa y mapeo de columnas. Los archivos se abren correctamente en Excel
+          (UTF-8 con BOM, separador punto y coma).
+        </p>
+
+        <ul class="mt-4 flex flex-wrap gap-1.5">
+          {
+            csvTables.map((table) => (
+              <li class="rounded border border-navy-100 bg-white px-2 py-1 font-mono text-[0.68rem] text-navy-800">
+                {table}.csv
+              </li>
+            ))
+          }
+        </ul>
+
+        <ul class="mt-6 space-y-2.5">
+          <li class="flex items-start gap-2.5 text-sm leading-snug text-ink/85">
+            <Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-azure-600" strokeWidth={2} />
+            Si una fila falla, no se aplica ningún cambio.
+          </li>
+          <li class="flex items-start gap-2.5 text-sm leading-snug text-ink/85">
+            <Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-azure-600" strokeWidth={2} />
+            Los registros con el mismo identificador se actualizan; los nuevos se agregan.
+          </li>
+          <li class="flex items-start gap-2.5 text-sm leading-snug text-ink/85">
+            <Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-azure-600" strokeWidth={2} />
+            Se aceptan números con coma o punto decimal y valores sí/no o true/false.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modelo de datos -->
+  <section id="modelo" class="border-y border-line bg-sand/60 py-16 lg:py-20">
+    <div class="container-page grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
+      <div>
+        <p class="eyebrow">Modelo de datos</p>
+        <h2 class="mt-4 font-display text-2xl font-semibold text-navy-900 sm:text-3xl">
+          Doce tablas, cinco dominios
+        </h2>
+        <p class="mt-4 text-sm leading-relaxed text-muted">
+          Académico, alumnado, cursada y evaluación, usuarios y permisos, y agenda. El diagrama
+          muestra las relaciones principales; existe una versión técnica con tipos, claves y
+          cardinalidades.
+        </p>
+        <ul class="mt-5 space-y-2 text-sm text-muted">
+          <li><strong class="font-semibold text-ink">Académico:</strong> carreras, materias, correlativas</li>
+          <li><strong class="font-semibold text-ink">Alumnado:</strong> alumnos, regularidad, alumno_materias, prórrogas</li>
+          <li><strong class="font-semibold text-ink">Cursada:</strong> notas, asistencia</li>
+          <li><strong class="font-semibold text-ink">Usuarios:</strong> usuarios, profesor_materias</li>
+          <li><strong class="font-semibold text-ink">Agenda:</strong> exámenes</li>
+        </ul>
+        <a
+          href={product.dataModel}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-navy-700 hover:text-navy-900"
+        >
+          Abrir diagrama completo
+          <Icon name="arrow-up-right" class="h-4 w-4" />
+        </a>
+      </div>
+
+      <figure class="overflow-hidden rounded-lg border border-line bg-white p-2 shadow-card">
+        <img
+          src={product.dataModel}
+          alt="Modelo de datos simplificado de EduGestionAR con las doce tablas y sus relaciones"
+          width="3520"
+          height="2460"
+          loading="lazy"
+          decoding="async"
+          class="block w-full rounded"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <!-- Ficha técnica + limitaciones -->
+  <section class="py-16 lg:py-20">
+    <div class="container-page grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+      <div>
+        <p class="eyebrow">Ficha técnica</p>
+        <h2 class="mt-4 font-display text-2xl font-semibold text-navy-900">Cómo está construido</h2>
+        <dl class="mt-6 divide-y divide-line border-y border-line">
+          {
+            techSheet.map((row) => (
+              <div class="flex items-baseline justify-between gap-6 py-3">
+                <dt class="text-[0.72rem] uppercase tracking-[0.14em] text-muted">{row.label}</dt>
+                <dd class="text-right text-sm font-medium text-navy-900">{row.value}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+
+      <div>
+        <p class="eyebrow">Limitaciones de la demo</p>
+        <h2 class="mt-4 font-display text-2xl font-semibold text-navy-900">Qué tener en cuenta</h2>
+        <ul class="mt-6 space-y-3">
+          {
+            limitations.map((limitation) => (
+              <li class="flex items-start gap-2.5 text-sm leading-relaxed text-muted">
+                <span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-navy-300" aria-hidden="true"></span>
+                {limitation}
+              </li>
+            ))
+          }
+        </ul>
+        <p class="mt-6 text-xs leading-relaxed text-muted">
+          El uso del software se rige por los{' '}
+          <a href={product.termsFile} target="_blank" rel="noopener noreferrer" class="font-semibold text-navy-700 underline decoration-navy-300 underline-offset-2">
+            términos y condiciones
+          </a>
+          {' '}que se muestran durante la instalación.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Preguntas -->
+  <section class="border-t border-line bg-sand/60 py-16 lg:py-20">
+    <div class="container-page grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+      <SectionHeading eyebrow="Preguntas frecuentes" title="Dudas habituales" />
+
+      <div class="divide-y divide-line border-y border-line">
+        {
+          faqs.map((faq) => (
+            <details class="group py-5">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-[1.02rem] font-semibold text-navy-900 marker:hidden">
+                {faq.question}
+                <Icon name="chevron-down" class="h-4 w-4 shrink-0 text-navy-400 transition-transform group-open:rotate-180" />
+              </summary>
+              <p class="mt-3 max-w-2xl text-sm leading-relaxed text-muted">{faq.answer}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="py-14">
+    <div class="container-page">
+      <div class="flex flex-col items-start justify-between gap-6 rounded-xl bg-navy-800 p-8 text-white sm:flex-row sm:items-center sm:p-10">
+        <div class="max-w-xl">
+          <h2 class="font-display text-2xl font-semibold">¿Necesitás ayuda con la instalación?</h2>
+          <p class="mt-2 text-sm leading-relaxed text-navy-100/85">
+            Escribinos y te acompañamos en la puesta en marcha o en la migración de datos.
+          </p>
+        </div>
+        <Button href="/contacto" variant="light" arrow>Contacto</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

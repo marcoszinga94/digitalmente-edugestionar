@@ -1,0 +1,74 @@
+---
+import { site } from '../config/site';
+import Logo from './Logo.astro';
+import Button from './Button.astro';
+import { product } from '../data/product';
+import MobileNav from './react/MobileNav';
+
+const pathname = Astro.url.pathname;
+const items = site.nav.map((item) => ({ label: item.label, href: item.href }));
+
+const isActive = (href: string) =>
+  href === '/' ? pathname === '/' : pathname.startsWith(href);
+---
+
+<header class="sticky top-0 z-40 border-b border-line/80 bg-white/90 backdrop-blur-md">
+  <a
+    href="#contenido"
+    class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:rounded-md focus:bg-navy-800 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+  >
+    Saltar al contenido
+  </a>
+
+  <div class="container-page flex h-[4.9rem] items-center justify-between gap-4">
+    <Logo />
+
+    <nav class="hidden lg:block" aria-label="Navegación principal">
+      <ul class="flex items-center gap-1">
+        {
+          items.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+                class:list={[
+                  'relative rounded-md px-3 py-2 text-sm font-medium transition-colors',
+                  isActive(item.href) ? 'text-navy-800' : 'text-muted hover:text-navy-800',
+                ]}
+              >
+                {item.label}
+                {isActive(item.href) && (
+                  <span class="accent-line absolute inset-x-3 -bottom-[1.3rem] h-[2px] rounded-full" />
+                )}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <div class="hidden sm:block">
+        <Button
+          href={product.installer.file}
+          size="sm"
+          download
+          class="gap-2"
+        >
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3v12M7 10l5 5 5-5M4 21h16" />
+          </svg>
+          Descargar demo
+        </Button>
+      </div>
+      <MobileNav
+        client:load
+        items={items}
+        pathname={pathname}
+        ctaLabel="Descargar demo"
+        ctaHref={product.installer.file}
+        ctaDownload
+      />
+    </div>
+  </div>
+</header>

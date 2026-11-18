@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import ContactForm from '../components/react/ContactForm';
+import { site, whatsappHref } from '../config/site';
+import { product } from '../data/product';
+
+const channels = [
+  {
+    icon: 'mail' as const,
+    label: 'Correo',
+    value: site.email,
+    href: `mailto:${site.email}`,
+    note: 'Respondemos dentro de las 48 horas hábiles.',
+  },
+  {
+    icon: 'whatsapp' as const,
+    label: 'WhatsApp',
+    value: 'Escribinos por WhatsApp',
+    href: whatsappHref,
+    note: 'Consultas rápidas de lunes a viernes, de 9 a 18 h.',
+    external: true,
+  },
+  {
+    icon: 'phone' as const,
+    label: 'Teléfono',
+    value: site.phoneDisplay,
+    href: `tel:${site.phoneHref}`,
+    note: 'Llamadas coordinadas con cita previa.',
+  },
+  {
+    icon: 'map-pin' as const,
+    label: 'Ubicación',
+    value: site.city,
+    note: site.addressNote,
+  },
+];
+
+const tips = [
+  'Qué institución representás y cuántos alumnos manejan.',
+  'Qué módulos te interesan: notas, regularidad, asistencia, respaldos.',
+  'Si hoy usan planillas, otro sistema o papel.',
+];
+---
+
+<BaseLayout
+  title="Contacto"
+  description="Consultas sobre EduGestionAR: demo guiada, instalación, soporte y adaptaciones para tu institución. Respondemos en 48 horas hábiles."
+>
+  <section class="border-b border-line bg-sand/50">
+    <div class="container-page py-14 lg:py-20">
+      <p class="eyebrow" data-reveal>Contacto</p>
+      <h1 class="mt-5 max-w-2xl font-display text-4xl font-semibold leading-[1.06] tracking-tight text-navy-900 sm:text-5xl" data-reveal style="--reveal-delay: 60ms">
+        Hablemos de EduGestionAR
+      </h1>
+      <p class="mt-6 max-w-2xl text-[1.05rem] leading-relaxed text-muted" data-reveal style="--reveal-delay: 120ms">
+        Coordinamos una demo guiada, te ayudamos con la instalación o respondemos dudas sobre
+        las funciones del sistema. Si querés probarlo ya, el instalador está disponible.
+      </p>
+      <div class="mt-8" data-reveal style="--reveal-delay: 180ms">
+        <Button href={product.installer.file} download variant="secondary">
+          <Icon name="download" class="h-4 w-4" />
+          Descargar demo antes de escribir
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-20">
+    <div class="container-page grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+      <div>
+        <h2 class="font-display text-xl font-semibold text-navy-900">Canales directos</h2>
+        <ul class="mt-6 space-y-3">
+          {
+            channels.map((channel) => {
+              const content = (
+                <>
+                  <span class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-navy-50 text-navy-700">
+                    <Icon name={channel.icon} class="h-5 w-5" />
+                  </span>
+                  <span class="min-w-0">
+                    <span class="block text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-muted">
+                      {channel.label}
+                    </span>
+                    <span class="mt-0.5 block truncate text-sm font-semibold text-navy-900">
+                      {channel.value}
+                    </span>
+                    <span class="mt-1 block text-xs leading-snug text-muted">{channel.note}</span>
+                  </span>
+                </>
+              );
+
+              return (
+                <li>
+                  {channel.href ? (
+                    <a
+                      href={channel.href}
+                      {...channel.external ? { target: '_blank', rel: 'noopener noreferrer' } : {}}
+                      class="flex items-start gap-4 rounded-lg border border-line bg-white p-4 shadow-card transition-colors hover:border-navy-200"
+                    >
+                      {content}
+                    </a>
+                  ) : (
+                    <div class="flex items-start gap-4 rounded-lg border border-line bg-white p-4 shadow-card">
+                      {content}
+                    </div>
+                  )}
+                </li>
+              );
+            })
+          }
+        </ul>
+
+        <div class="mt-8 rounded-lg border border-navy-100 bg-navy-50/70 p-5">
+          <h3 class="flex items-center gap-2 font-display text-sm font-semibold text-navy-900">
+            <Icon name="clock" class="h-4 w-4 text-navy-600" />
+            Horario de atención
+          </h3>
+          <p class="mt-2 text-sm text-muted">{site.hours}</p>
+        </div>
+
+        <div class="mt-8">
+          <h3 class="font-display text-sm font-semibold text-navy-900">Para agilizar la respuesta</h3>
+          <ul class="mt-3 space-y-2.5">
+            {
+              tips.map((tip) => (
+                <li class="flex items-start gap-2.5 text-sm leading-snug text-muted">
+                  <Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-azure-600" strokeWidth={2} />
+                  {tip}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+
+      <div class="rounded-xl border border-line bg-white p-6 shadow-card sm:p-8">
+        <h2 class="font-display text-xl font-semibold text-navy-900">Formulario de contacto</h2>
+        <p class="mt-1.5 text-sm text-muted">
+          Los campos marcados con <span aria-hidden="true">*</span> son obligatorios.
+        </p>
+        <div class="mt-6">
+          <ContactForm email={site.email} endpoint={site.formEndpoint} client:load />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

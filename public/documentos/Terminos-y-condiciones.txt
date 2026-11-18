@@ -1,0 +1,223 @@
+﻿EduGestionAR - Sistema de Gestión Escolar
+TÉRMINOS Y CONDICIONES DE USO Y LICENCIA DE SOFTWARE
+Versión del documento: 1.1 - Octubre de 2026
+
+IMPORTANTE: Lea detenidamente estos Términos y Condiciones antes de
+instalar y utilizar EduGestionAR. Al seleccionar "Acepto el acuerdo" y
+continuar con la instalación, usted declara haber leído, comprendido y
+aceptado la totalidad de las condiciones aquí establecidas. Si no está de
+acuerdo, seleccione "No acepto" y cancele la instalación.
+
+----------------------------------------------------------------------------
+AVISO: ESTE SOFTWARE ES UNA DEMO
+----------------------------------------------------------------------------
+EduGestionAR se distribuye en su versión de DEMOSTRACIÓN (DEMO),
+desarrollada como proyecto académico. No es un producto terminado, puede
+contener errores o funciones incompletas y NO debe utilizarse como sistema
+oficial de una institución educativa ni para el tratamiento de datos
+personales reales de alumnos, docentes o terceros.
+El carácter demostrativo del Software se desarrolla en los puntos 1.4,
+3.4, 4.6, 5.5 y 6.4 de estos Términos.
+----------------------------------------------------------------------------
+
+
+1. PARTES Y ALCANCE
+
+1.1. "El Software" es el programa EduGestionAR - Sistema de Gestión
+Escolar, desarrollado por Zingaretti Marcos, Cassagne Celia y Godoy
+Agustín ("los Desarrolladores"), e incluye el código ejecutable, los
+recursos gráficos, la documentación y las actualizaciones que se
+distribuyan.
+
+1.2. "El Usuario" es la persona que instala o utiliza el Software, ya sea
+a título individual o en representación de una institución educativa ("la
+Institución").
+
+1.3. Estos Términos regulan la instalación, el uso y la desinstalación
+del Software en equipos con sistema operativo Windows.
+
+1.4. El Software se distribuye en su versión de demostración ("DEMO"),
+con fines académicos y de evaluación. Dicha versión puede contener
+errores, funcionalidades incompletas o en desarrollo y no constituye un
+producto terminado ni una versión de producción.
+
+
+2. ACEPTACIÓN
+
+2.1. La instalación del Software implica la aceptación plena y sin
+reservas de estos Términos y Condiciones, incluido el carácter
+demostrativo del Software.
+
+2.2. Si el Usuario instala el Software en equipos de una Institución,
+declara contar con facultades suficientes para aceptar estos Términos en
+nombre de ella.
+
+
+3. LICENCIA DE USO
+
+3.1. Se concede al Usuario una licencia gratuita, no exclusiva, no
+transferible y revocable para instalar y utilizar el Software con fines
+educativos y de gestión institucional.
+
+3.2. No está permitido: (a) vender, alquilar, sublicenciar o distribuir
+comercialmente el Software; (b) modificarlo, descompilarlo o someterlo a
+ingeniería inversa, salvo en los supuestos expresamente permitidos por la
+legislación aplicable; (c) eliminar o alterar los avisos de autoría y
+propiedad intelectual; (d) utilizarlo para fines ilícitos o contrarios al
+orden público.
+
+3.3. Se permite instalar el Software en la cantidad de equipos que la
+Institución requiera para su funcionamiento interno.
+
+3.4. La licencia de la versión DEMO se otorga exclusivamente para
+pruebas, demostraciones y evaluación. Queda prohibido su uso como sistema
+oficial de registro, certificación o respaldo documental de una
+Institución.
+
+
+4. DATOS PERSONALES Y CONFIDENCIALIDAD
+
+4.1. El Software almacena y procesa datos de alumnos, docentes y
+usuarios (nombres, documentos, legajos, calificaciones, asistencias,
+condiciones de regularidad, planes de estudio, entre otros). El Usuario y
+la Institución son los únicos responsables de la licitud de la
+recolección, del uso y de la custodia de dichos datos.
+
+4.2. El tratamiento de datos personales debe ajustarse a la Ley N.º 25.326
+de Protección de los Datos Personales de la República Argentina y a la
+normativa complementaria que resulte aplicable.
+
+4.3. Los Desarrolladores no acceden, recopilan, transmiten ni comparten
+los datos cargados en el Software. Toda la información se almacena de
+forma local en el equipo del Usuario, sin envío a servidores externos ni
+servicios en la nube.
+
+4.4. El acceso al Software está protegido mediante credenciales de
+usuario. El Usuario debe mantener la confidencialidad de sus credenciales
+y comunicar de inmediato cualquier uso no autorizado. La seguridad de los
+equipos donde se instala el Software, incluido el acceso al sistema
+operativo, es responsabilidad del Usuario y de la Institución.
+
+4.5. El Usuario se compromete a respetar los derechos de los titulares de
+los datos (acceso, rectificación, actualización y supresión) y a no
+incorporar información de personas que no hayan prestado su
+consentimiento cuando ello fuera legalmente exigible.
+
+4.6. En la versión DEMO no deben cargarse datos personales reales de
+alumnos, docentes, postulantes ni terceros. Para las pruebas debe
+utilizarse información ficticia o debidamente anonimizada.
+
+
+5. RESPONSABILIDAD DEL USUARIO Y COPIA DE SEGURIDAD
+
+5.1. El Usuario es responsable de verificar la exactitud e integridad de
+la información que ingresa, importa o exporta mediante el Software, así
+como de la correcta asignación de permisos a los distintos usuarios del
+sistema.
+
+5.2. La base de datos y las preferencias del Software se almacenan en la
+carpeta del perfil de Windows del Usuario:
+
+        %LOCALAPPDATA%\EduGestor
+
+Corresponde al Usuario realizar copias de seguridad periódicas de esa
+carpeta y conservarlas en un medio seguro.
+
+5.3. La desinstalación del Software no elimina automáticamente la base de
+datos ni las preferencias del Usuario. Si desea eliminarlas, deberá
+hacerlo en forma manual sobre la carpeta indicada en el punto 5.2.
+
+5.4. El Software es una herramienta de apoyo a la gestión escolar y no
+reemplaza los registros oficiales, libros matrices ni la documentación
+que exija la normativa educativa vigente.
+
+5.5. La versión DEMO no garantiza la conservación, integridad ni
+migración de los datos ingresados: la base de datos puede reiniciarse o
+eliminarse en actualizaciones, reinstalaciones o cambios de versión, sin
+previo aviso y sin responsabilidad para los Desarrolladores.
+
+
+6. LIMITACIÓN DE RESPONSABILIDAD
+
+6.1. El Software se entrega "tal cual" ("as is") y "según
+disponibilidad", sin garantías expresas ni implícitas, incluidas, entre
+otras, las garantías de comerciabilidad, adecuación a un propósito
+determinado y ausencia de errores.
+
+6.2. En la máxima medida permitida por la legislación aplicable, los
+Desarrolladores no serán responsables por daños directos, indirectos,
+incidentales, especiales o consecuentes, ni por la pérdida de datos,
+lucro cesante, interrupción de actividades o daños derivados del uso o de
+la imposibilidad de uso del Software, aun cuando hubieran sido advertidos
+de tales posibilidades.
+
+6.3. Nada en estos Términos se interpretará como limitación de aquellas
+responsabilidades que no puedan limitarse o excluirse conforme a la ley.
+
+6.4. La versión DEMO se entrega únicamente con fines de demostración y
+evaluación: los Desarrolladores no garantizan su funcionamiento continuo,
+la exactitud de los resultados, la conservación de la información ni la
+disponibilidad de soporte técnico.
+
+
+7. ACTUALIZACIONES, SOPORTE Y CAMBIOS
+
+7.1. Los Desarrolladores podrán publicar actualizaciones o nuevas
+versiones del Software, sin que ello constituya una obligación.
+
+7.2. El soporte técnico se brinda de manera voluntaria y no genera, por
+sí mismo, obligación contractual alguna, salvo acuerdo escrito en
+contrario.
+
+7.3. Estos Términos podrán ser actualizados en versiones futuras. La
+versión vigente se entrega junto con el instalador y, una vez instalado
+el Software, en la carpeta "Documentacion".
+
+
+8. PROPIEDAD INTELECTUAL
+
+8.1. El Software, su código fuente, diseño de interfaz, logotipos y
+documentación son propiedad de los Desarrolladores y están protegidos por
+la Ley N.º 11.723 de Propiedad Intelectual y por la normativa
+internacional aplicable.
+
+8.2. Los nombres, logotipos e identidad de la Institución se utilizan
+únicamente a los fines de identificación del establecimiento y no
+implican cesión de derechos sobre ellos.
+
+
+9. VIGENCIA Y TERMINACIÓN
+
+9.1. La licencia rige desde la instalación y mientras el Usuario utilice
+el Software.
+
+9.2. La licencia se extingue de pleno derecho ante el incumplimiento de
+estos Términos. En tal caso, el Usuario deberá desinstalar el Software y
+destruir todas las copias en su poder.
+
+9.3. Las cláusulas 4, 5, 6 y 8 subsisten a la terminación de la licencia.
+
+
+10. LEGISLACIÓN APLICABLE Y JURISDICCIÓN
+
+10.1. Estos Términos y Condiciones se rigen por las leyes de la República
+Argentina.
+
+10.2. Toda controversia derivada de su interpretación o aplicación se
+someterá a los tribunales ordinarios competentes del domicilio de los
+Desarrolladores, con renuncia a cualquier otro fuero o jurisdicción.
+
+
+11. CONTACTO
+
+11.1. Por consultas, sugerencias o reportes de errores, dirigirse a los
+Desarrolladores: Zingaretti Marcos, Cassagne Celia y Godoy Agustín.
+
+
+Al aceptar, el Usuario declara haber leído y comprendido la totalidad de
+estos Términos y Condiciones, reconocer que el Software es una versión
+DEMO con fines académicos y aceptarlos en forma libre y voluntaria.
+
+
+© 2026 Zingaretti Marcos, Cassagne Celia y Godoy Agustín.
+Todos los derechos reservados.
